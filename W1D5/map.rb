@@ -1,17 +1,20 @@
+require "byebug"
 class Map
 
   def initialize
     @arr = []
   end
   def set(key, value)
-    check = false
+    check = true
     @arr.each do |subarr|
       if subarr.include?(key)
-        subarr[key] = value
-        check = true
+        subarr[-1] = value
+        check = false
       end
     end
+    # byebug
     @arr << [key,value] if check
+    [key,value]
   end
 
   def get(key)
@@ -22,7 +25,8 @@ class Map
   end
   def delete(key)
     @arr.each do |subarr|
-      @arr.delete(subarr)if subarr.include? key
+      @arr.delete(subarr)if subarr.include?(key)
+      return subarr
     end
   end
   def show
