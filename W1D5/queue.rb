@@ -3,7 +3,7 @@ class Queue
   attr_reader :underlying_array
 
   def initialize()
-    @underlying_array = underlying_array
+    @underlying_array = []
   end
 
   def enqueue(el)
