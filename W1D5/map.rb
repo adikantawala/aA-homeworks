@@ -11,7 +11,7 @@ class Map
         check = true
       end
     end
-    arr << [key,value]if check
+    @arr << [key,value] if check
   end
 
   def get(key)
