@@ -27,26 +27,26 @@ class Board
   end
 
   def make_move(start_pos, current_player_name)
-    stones = @cups[start_pos]
+    count = @cups[start_pos].length
     @cups[start_pos] = []
 
-    cup_idx = start_pos
-    until stones.empty?
-      cup_idx += 1
+    until count == 0
+      start_pos +=  1
+      start_pos = 0 if start_pos > 13
 
-      cup_idx = 0 if cup_idx > 13
-
-      if cup_idx == 6
-        @cups[6] << stones.pop if @name1 == current_player_name
-      elsif cup_idx == 13
-        @cups[13] << stones.pop if @name2 == current_player_name
+      if start_pos == 6 && @name1 == current_player_name
+        @cups[6] << :stone
+      elsif start_pos == 13 && @name2 == current_player_name
+        @cups[13] << :stone
       else
-        @cups[cup_idx] << stones.pop
+        @cups[start_pos] << :stone
       end
+      count -= 1
     end
+
     # render
     # ending_cup_idx = start_pos
-    next_turn(cup_idx)
+    next_turn(start_pos)
   end
 
   def next_turn(ending_cup_idx)
@@ -57,7 +57,6 @@ class Board
     if ending_cup_idx == 6 || ending_cup_idx == 13
       :prompt
     elsif @cups[ending_cup_idx].count == 1
-
       :switch
     else
 
