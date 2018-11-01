@@ -59,7 +59,7 @@ def Slow_Dance(target, array)
   end
 end
 
-# tiles_hash = {up:0, right-up:1, right:2, right-down:3, down:4, left-down:5, left:6,  left-up:7}
+# tiles_hash = {"up" => 0, "right-up" => 1, "right" => 2, "right-down" => 3, "down" => 4, "left-down" => 5, "left" => 6,  "left-up" =>7 }
 def fast_dance(target,new_data_struct)
   return new_data_struct[target]
 end
