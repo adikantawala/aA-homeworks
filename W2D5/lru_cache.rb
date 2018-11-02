@@ -10,14 +10,20 @@ class LRUCache
   end
 
   def add(el)
-    if @cache.length > @size
+    if @cache.include?(el)
+      @cache.delete(el)
+      @cache << el
+    elsif @cache.length >= @size
       @cache.push(el)
       @cache.shift
+    else
+      @cache << el
     end
   end
 
   def show
-    return @cache
+    p @cache
+    nil
   end
 
   private
